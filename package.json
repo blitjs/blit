@@ -1,0 +1,30 @@
+{
+  "name": "blit",
+  "author": "Joshua Groves <josh@joshgroves.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/blitjs/blit.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/blitjs/blit/issues"
+  },
+  "scripts": {
+    "test:watch": "Lerna run --parallel test:watch",
+    "test": "lerna run test",
+    "build:watch": "lerna run --parallel build:watch",
+    "build": "lerna run build"
+  },
+  "homepage": "https://github.com/blitjs/blit/",
+  "devDependencies": {
+    "@types/jasmine": "^2.5.51",
+    "@types/node": "^7.0.27",
+    "@types/webgl-ext": "0.0.28",
+    "@types/webgl2": "0.0.1",
+    "lerna": "^2.0.0-rc.5",
+    "tslint": "^5.4.2",
+    "typescript": "^2.3.3"
+  },
+  "private": true,
+  "version": "0.0.0"
+}
