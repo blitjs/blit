@@ -28,6 +28,7 @@
   },
   "homepage": "https://github.com/blitjs/blit/",
   "devDependencies": {
+    "@blit/core": "^0.0.0",
     "@types/jasmine": "^2.5.51",
     "@types/node": "^7.0.27",
     "@types/webgl-ext": "0.0.28",
@@ -41,7 +42,6 @@
     "karma-typescript": "^3.0.2",
     "karma-typescript-es6-transform": "^1.0.1",
     "npm-run-all": "^4.0.2",
-    "@blit/core": "^0.0.1-4",
     "prettier": "^1.4.2",
     "rimraf": "^2.6.1",
     "rollup": "^0.41.6",
