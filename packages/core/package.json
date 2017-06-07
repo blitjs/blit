@@ -1,5 +1,5 @@
 {
-  "name": "core",
+  "name": "@blit/core",
   "version": "0.0.0",
   "main": "./dist/blit-core.umd.js",
   "module": "./dist/blit-core.es5.js",

@@ -1,5 +1,5 @@
 {
-  "name": "webgl",
+  "name": "@blit/webgl",
   "version": "0.0.0",
   "main": "./dist/blit-webgl.umd.js",
   "module": "./dist/blit-webgl.es5.js",
