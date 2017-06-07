@@ -55,5 +55,8 @@
   "directories": {
     "test": "test"
   },
-  "description": ""
+  "description": "",
+  "publishConfig": {
+    "access": "public"
+  }
 }
