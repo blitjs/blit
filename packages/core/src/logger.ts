@@ -1,4 +1,4 @@
-import * as Types from './types';
+import * as Types from "./types";
 
 function addPrefix(message: string) {
   return `blit/${message}`;
@@ -23,7 +23,9 @@ function wrapConsole(
   };
 }
 
-export default function logger(options?: Types.BlitLoggerOptions): Types.BlitLogger {
+export default function logger(
+  options?: Types.BlitLoggerOptions
+): Types.BlitLogger {
   let handler: Types.BlitLogFunction | undefined,
     errorHandler: Types.BlitLogFunction | undefined;
 

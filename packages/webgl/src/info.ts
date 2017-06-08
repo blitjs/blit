@@ -1,6 +1,6 @@
 import { BlitLogger } from "@blit/core";
 
-import * as Types from './types';
+import * as Types from "./types";
 import { GL_MAX_COLOR_ATTACHMENTS, GL_VERSION } from "./common";
 
 function parseVersion(gl: Types.$GLContext, logger: BlitLogger) {

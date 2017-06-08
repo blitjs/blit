@@ -1,4 +1,4 @@
-import { BlitInstanceInfo, BlitInstanceOptions } from '@blit/core';
+import { BlitInstanceInfo, BlitInstanceOptions } from "@blit/core";
 
 /* Instance */
 export type BlitWebGLInstanceInfo = {
@@ -6,7 +6,6 @@ export type BlitWebGLInstanceInfo = {
   minorVersion: number;
 } & BlitInstanceInfo;
 
-export type BlitWebGLInstanceOptions = {
-} & BlitInstanceOptions;
+export type BlitWebGLInstanceOptions = {} & BlitInstanceOptions;
 
 export type $GLContext = WebGLRenderingContext | WebGL2RenderingContext;

@@ -1,14 +1,14 @@
 /* Instance */
-export type BlitInstanceInfo = { maxColorTargets: number }
+export type BlitInstanceInfo = { maxColorTargets: number };
 
-export type BlitInstanceOptions = { log?: BlitLoggerOptions }
+export type BlitInstanceOptions = { log?: BlitLoggerOptions };
 
 /* Logger */
 export type BlitLogHandler = ((message: string, shouldThrow: boolean) => void);
 
 export type BlitLoggerOptions = {
   handler: BlitLogHandler;
-}
+};
 
 export type BlitLogFunction = (message: string) => void;
 
@@ -17,4 +17,4 @@ export type BlitLogger = {
   info: BlitLogFunction;
   warn: BlitLogFunction;
   error: BlitLogFunction;
-}
+};
