@@ -1,14 +1,10 @@
-export type BlitLogHandler = ((message: string, shouldThrow: boolean) => void);
-
-export interface BlitLoggerOptions {
-  handler: BlitLogHandler;
-}
+import * as Types from './types';
 
 function addPrefix(message: string) {
-  return "blit: " + message;
+  return `blit/${message}`;
 }
 
-function wrapHandler(handler: BlitLogHandler, shouldThrow: boolean) {
+function wrapHandler(handler: Types.BlitLogHandler, shouldThrow: boolean) {
   return function wrapped(message: string) {
     return handler(addPrefix(message), shouldThrow);
   };
@@ -27,18 +23,9 @@ function wrapConsole(
   };
 }
 
-export type BlitLogFunction = (message: string) => void;
-
-export interface BlitLogger {
-  log: BlitLogFunction;
-  info: BlitLogFunction;
-  warn: BlitLogFunction;
-  error: BlitLogFunction;
-}
-
-export default function logger(options?: BlitLoggerOptions): BlitLogger {
-  let handler: BlitLogFunction | undefined,
-    errorHandler: BlitLogFunction | undefined;
+export default function logger(options?: Types.BlitLoggerOptions): Types.BlitLogger {
+  let handler: Types.BlitLogFunction | undefined,
+    errorHandler: Types.BlitLogFunction | undefined;
 
   if (options) {
     handler = wrapHandler(options.handler, false);

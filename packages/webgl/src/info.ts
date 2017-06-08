@@ -1,9 +1,10 @@
-import { BlitInfo } from "@blit/core";
-import { GL_MAX_COLOR_ATTACHMENTS, GL_VERSION } from "./common";
-import { WebGLContext } from "./context";
+import { BlitLogger } from "@blit/core";
 
-function parseVersion(context: WebGLContext) {
-  const version = context.$gl.getParameter(GL_VERSION),
+import * as Types from './types';
+import { GL_MAX_COLOR_ATTACHMENTS, GL_VERSION } from "./common";
+
+function parseVersion(gl: Types.$GLContext, logger: BlitLogger) {
+  const version = gl.getParameter(GL_VERSION),
     parsed = /([0-9]+)\.?([0-9]*)?/.exec(version);
 
   let majorVersion: number, minorVersion: number;
@@ -14,7 +15,7 @@ function parseVersion(context: WebGLContext) {
       minorVersion = Number(parsed![2]);
     } else {
       if (process.env.NODE_ENV !== "production") {
-        context.$logger.warn(
+        logger.warn(
           `Unable to parse minor version in '${version}', assumed to be ${majorVersion}.0`
         );
       }
@@ -22,7 +23,7 @@ function parseVersion(context: WebGLContext) {
     }
   } else {
     if (process.env.NODE_ENV !== "production") {
-      context.$logger.warn(
+      logger.warn(
         `Unable to parse version string '${version}', fell back to 1.0`
       );
     }
@@ -32,16 +33,11 @@ function parseVersion(context: WebGLContext) {
   return { majorVersion, minorVersion };
 }
 
-export interface BlitWebGLInfo extends BlitInfo {
-  majorVersion: number;
-  minorVersion: number;
-}
-
-export default function info(context: WebGLContext): BlitWebGLInfo {
-  const { majorVersion, minorVersion } = parseVersion(context);
+export default function info(gl: Types.$GLContext, logger: BlitLogger) {
+  const { majorVersion, minorVersion } = parseVersion(gl, logger);
   return {
     majorVersion,
     minorVersion,
-    maxColorTargets: context.$gl.getParameter(GL_MAX_COLOR_ATTACHMENTS)
+    maxColorTargets: gl.getParameter(GL_MAX_COLOR_ATTACHMENTS)
   };
 }

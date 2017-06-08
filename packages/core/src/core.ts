@@ -1,12 +1,11 @@
-import { Context, BlitContext, BlitContextOptions } from "./backend/context";
-import { BlitInfo } from "./backend/info";
+import logger from "./logger";
 
 // Internals
 const $ = {
-  Context
+  logger
 };
 
 export { $ };
 
 // Types
-export { BlitContext, BlitContextOptions, BlitInfo };
+export * from "./types";

@@ -1,14 +1,17 @@
-import context from "../src/context";
+import { $ } from "@blit/core";
+
+import instance from "../src/instance";
 import info from "../src/info";
 
 describe("parameters", () => {
   it("should populate max color targets", () => {
-    expect(info(context({})).maxColorTargets).not.toBeUndefined();
+    const gl = document.createElement("canvas").getContext("webgl");
+    expect(info(gl, $.logger()).maxColorTargets).not.toBeUndefined();
   });
 
   it("should populate major and minor version", () => {
     let warning: string;
-    const created = context({
+    const created = instance({
       log: {
         handler: (message: string) => {
           warning = message;
@@ -35,7 +38,7 @@ describe("parameters", () => {
           ? set[0]
           : original(parameter);
 
-      const { majorVersion, minorVersion } = info(created);
+      const { majorVersion, minorVersion } = created.$info;
       expect(majorVersion).toBe(set[1] as number);
       expect(minorVersion).toBe(set[2] as number);
       if (set[3]) {
@@ -46,7 +49,7 @@ describe("parameters", () => {
 
   it("should ignore warnings on production builds", () => {
     const mode = process.env.NODE_ENV,
-      created = context({}),
+      created = instance({}),
       original = created.$gl.getParameter.bind(created.$gl);
 
     process.env.NODE_ENV = "production";
