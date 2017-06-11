@@ -3,7 +3,7 @@ import containing from "./helpers/containing";
 
 describe("logger", () => {
   it("should log to the console by default", () => {
-    let logged: string;
+    let logged: string | undefined;
     const { log, info, warn, error } = console,
       messages = ["a", "b", "c", "d"],
       intercept = (message: string) => {
@@ -29,7 +29,7 @@ describe("logger", () => {
   });
 
   it("should log to a provided handler", () => {
-    let logged: string, shouldHaveThrown: boolean;
+    let logged: string | undefined, shouldHaveThrown: boolean | undefined;
     const messages = ["a", "b", "c", "d"],
       l = logger({
         handler: (message: string, shouldThrow: boolean) => {

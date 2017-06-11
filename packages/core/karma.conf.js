@@ -1,4 +1,6 @@
 const watch = process.env.TEST_MODE === 'watch';
+
+console.log(require("./../../tsconfig.common.json"));
 module.exports = function (config) {
     config.set({
         frameworks: [
@@ -28,7 +30,11 @@ module.exports = function (config) {
                   'subdirectory': 'generated'
                 },
                 'text-summary': ''
-            }
+            },
+            compilerOptions: Object.assign(
+              require("./../../tsconfig.common.json").compilerOptions,
+              require("./tsconfig.json").compilerOptions
+            )
         },
         colors: true,
         logLevel: config.LOG_INFO,

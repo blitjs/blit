@@ -1,7 +1,29 @@
-/* Instance */
-export type BlitInstanceInfo = { maxColorTargets: number };
+/* Context */
+export type BlitContextInfo = {};
 
-export type BlitInstanceOptions = { log?: BlitLoggerOptions };
+export type BlitContextOptions = { log?: BlitLoggerOptions };
+
+export type BlitContextCapabilities = {
+  maxColorTargets: number;
+};
+
+export type BlitContext = {
+  info: BlitContextInfo;
+  capabilities: BlitContextCapabilities;
+  getPhysicalDevices(): BlitPhysicalDevice[];
+  createLogicalDevice(): BlitLogicalDevice;
+};
+
+/* Physical Device */
+export type BlitPhysicalDevice = {
+  getQueueFamilies(): BlitQueueFamily[];
+};
+
+/* Queue Family */
+export type BlitQueueFamily = {};
+
+/* Logical Device */
+export type BlitLogicalDevice = {};
 
 /* Logger */
 export type BlitLogHandler = ((message: string, shouldThrow: boolean) => void);

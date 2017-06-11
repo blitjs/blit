@@ -1,11 +1,20 @@
-import { BlitInstanceInfo, BlitInstanceOptions } from "@blit/core";
+import { BlitContextInfo, BlitContextOptions } from "@blit/core";
 
-/* Instance */
-export type BlitWebGLInstanceInfo = {
-  majorVersion: number;
-  minorVersion: number;
-} & BlitInstanceInfo;
+/* Context */
+export type BlitWebGLContextInfo = {
+  version: {
+    major: number;
+    minor: number;
+  };
+  extensions: string[];
+} & BlitContextInfo;
 
-export type BlitWebGLInstanceOptions = {} & BlitInstanceOptions;
+export type $WebGLContextCapabilities = {
+  instancedArraysSupported: boolean;
+  drawBuffersSupported: boolean;
+};
 
-export type $GLContext = WebGLRenderingContext | WebGL2RenderingContext;
+export type BlitWebGLContextOptions = {} & BlitContextOptions;
+
+/* WebGL */
+export type $WebGLContext = WebGLRenderingContext | WebGL2RenderingContext;

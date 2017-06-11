@@ -28,7 +28,11 @@ module.exports = function (config) {
                   'subdirectory': 'generated'
                 },
                 'text-summary': ''
-            }
+            },
+            compilerOptions: Object.assign(
+              require("./../../tsconfig.common.json").compilerOptions,
+              require("./tsconfig.json").compilerOptions
+            )
         },
         colors: true,
         logLevel: config.LOG_INFO,

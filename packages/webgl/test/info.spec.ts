@@ -1,16 +1,12 @@
 import { $ } from "@blit/core";
 
-import info from "../src/info";
+import createInfo from "../src/info";
 
 const createGL = () => document.createElement("canvas").getContext("webgl");
 
 describe("info", () => {
-  it("should populate max color targets", () => {
-    expect(info(createGL(), $.logger()).maxColorTargets).not.toBeUndefined();
-  });
-
   it("should populate major and minor version", () => {
-    let warning: string;
+    let warning: string | undefined;
     const gl = createGL(),
       logger = $.logger({
         handler: (message: string) => {
@@ -37,9 +33,9 @@ describe("info", () => {
           ? set[0]
           : original(parameter);
 
-      const { majorVersion, minorVersion } = info(gl, logger);
-      expect(majorVersion).toBe(set[1] as number);
-      expect(minorVersion).toBe(set[2] as number);
+      const { version } = createInfo(gl, logger);
+      expect(version.major).toBe(set[1] as number);
+      expect(version.minor).toBe(set[2] as number);
       if (set[3]) {
         expect(warning).toContain(set[3] as string);
       }
@@ -60,7 +56,7 @@ describe("info", () => {
           ? version
           : original(parameter);
 
-      expect(() => info(gl, logger)).not.toThrowError();
+      expect(() => createInfo(gl, logger)).not.toThrowError();
     }
 
     process.env.NODE_ENV = mode;
