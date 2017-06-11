@@ -10,4 +10,10 @@ describe("physical device", () => {
     expect(families).toBeDefined();
     expect(families.length).toBeGreaterThanOrEqual(0);
   });
+
+  it("should get memory types", () => {
+    const types = createPhysicalDevice().getMemoryTypes();
+    expect(types).toBeDefined();
+    expect(types.length).toBeGreaterThanOrEqual(0);
+  })
 });

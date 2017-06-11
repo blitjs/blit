@@ -26,5 +26,5 @@ describe("context", () => {
   it("should create a logical device", () => {
     const device = createContext().createLogicalDevice();
     expect(device).toBeDefined();
-  })
+  });
 });

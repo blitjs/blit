@@ -32,7 +32,10 @@ describe("capabilities", () => {
       parameter === GL_MAX_COLOR_ATTACHMENTS
         ? colorTargets
         : original(parameter);
-    const created1Ext = createCapabilities(gl1Ext, createInfo(gl1Ext, $.logger()));
+    const created1Ext = createCapabilities(
+      gl1Ext,
+      createInfo(gl1Ext, $.logger())
+    );
     expect(created1Ext.gl.drawBuffersSupported).toBe(true);
     expect(created1Ext.context.maxColorTargets).toBe(colorTargets);
 
