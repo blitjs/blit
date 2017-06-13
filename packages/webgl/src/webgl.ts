@@ -1,1 +1,1 @@
-export { default } from "./context";
+export { default as createContext } from "./context";

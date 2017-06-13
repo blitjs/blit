@@ -25,20 +25,10 @@ export type BlitQueueFamily = {
   queueFlags: number;
 };
 
-export enum BlitQueueFlag {
-  Graphics = 1,
-  Present = 2
-}
-
 /* Memory */
 export type BlitMemoryType = {
   memoryFlags: number;
 };
-
-export enum BlitMemoryFlag {
-  HostVisible = 1,
-  DeviceLocal = 2
-}
 
 /* Logical Device */
 export type BlitLogicalDevice = {};

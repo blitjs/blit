@@ -1,9 +1,13 @@
-import { BlitPhysicalDevice } from "@blit/core";
+import { BlitPhysicalDevice, QueueFlag } from "@blit/core";
 
 export default function physicalDevice(): BlitPhysicalDevice {
   return {
     getQueueFamilies() {
-      return [];
+      return [
+        {
+          queueFlags: QueueFlag.GRAPHICS | QueueFlag.PRESENT
+        }
+      ];
     },
     getMemoryTypes() {
       return [];

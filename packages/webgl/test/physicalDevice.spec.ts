@@ -15,5 +15,5 @@ describe("physical device", () => {
     const types = createPhysicalDevice().getMemoryTypes();
     expect(types).toBeDefined();
     expect(types.length).toBeGreaterThanOrEqual(0);
-  })
+  });
 });
