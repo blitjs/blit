@@ -1,3 +1,5 @@
+import { ShaderStage } from "@blit/core";
+
 // All WebGL1/2 constants
 export const GL_DEPTH_BUFFER_BIT = 0x00000100;
 export const GL_STENCIL_BUFFER_BIT = 0x00000400;
@@ -559,3 +561,8 @@ export const GL_MAX_ELEMENT_INDEX = 0x8d6b;
 export const GL_TEXTURE_IMMUTABLE_LEVELS = 0x82df;
 export const GL_TIMEOUT_IGNORED = -1; //tslint:disable-line
 export const GL_MAX_CLIENT_WAIT_TIMEOUT_WEBGL = 0x9247;
+
+export const STAGE_TO_GL_SHADER_TYPE = {
+  [ShaderStage.VERTEX]: GL_VERTEX_SHADER,
+  [ShaderStage.FRAGMENT]: GL_FRAGMENT_SHADER,
+};

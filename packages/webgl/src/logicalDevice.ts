@@ -1,8 +1,18 @@
-import { BlitLogicalDevice } from "@blit/core";
+import {
+  BlitLogicalDevice,
+  BlitLogger,
+  ShaderStage
+} from "@blit/core";
 
-export default function logicalDevice(): BlitLogicalDevice {
+import * as Types from "./types";
+import { createShaderModule } from "./shader";
+
+export default function logicalDevice(
+  gl: Types.$WebGLContext,
+  logger: BlitLogger
+): BlitLogicalDevice {
   return {
-    device: {},
-    queues: [{}]
+    createShaderModule: (stage: ShaderStage, source: string) =>
+      createShaderModule(gl, logger, stage, source)
   };
 }

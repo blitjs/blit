@@ -6,6 +6,10 @@ import createCapabilities from "./capabilities";
 import createPhysicalDevice from "./physicalDevice";
 import createLogicalDevice from "./logicalDevice";
 
+function getPhysicalDevices() {
+  return [createPhysicalDevice()];
+}
+
 export default function context(
   options?: Types.BlitWebGLContextOptions
 ): {
@@ -21,12 +25,8 @@ export default function context(
   return {
     info,
     capabilities: capabilities.context,
-    getPhysicalDevices() {
-      return [createPhysicalDevice()];
-    },
-    createLogicalDevice() {
-      return createLogicalDevice();
-    },
+    getPhysicalDevices,
+    createLogicalDevice: () => createLogicalDevice($gl, $logger),
     $logger,
     $gl,
     $glCapabilities: capabilities.gl

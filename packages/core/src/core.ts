@@ -11,4 +11,4 @@ export { $ };
 export * from "./types";
 
 // Enums
-export { QueueFlag, MemoryFlag } from "./enums";
+export { QueueFlag, MemoryFlag, ShaderStage } from "./enums";

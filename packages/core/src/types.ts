@@ -1,3 +1,5 @@
+import { ShaderStage } from "./enums";
+
 /* Context */
 export type BlitContextInfo = {};
 
@@ -31,7 +33,13 @@ export type BlitMemoryType = {
 };
 
 /* Logical Device */
-export type BlitLogicalDevice = {};
+export type BlitLogicalDevice = {
+  createShaderModule(stage: ShaderStage, source: string): BlitShaderModule;
+};
+
+/* Shader Module */
+export type BlitShaderModule = {
+};
 
 /* Logger */
 export type BlitLogHandler = ((message: string, shouldThrow: boolean) => void);
