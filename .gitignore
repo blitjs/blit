@@ -3,6 +3,6 @@ build
 node_modules
 *.log
 compiled
-tmp
+#tmp
 dist
 coverage
