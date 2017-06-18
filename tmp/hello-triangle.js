@@ -1,7 +1,7 @@
 const process = { env: { NODE_ENV: "development" } },
-  { core: { QueueFlag, ShaderStage } } = blit,
+  { core: { QueueFlag, ShaderStage }, webgl } = blit,
   canvas = document.createElement("canvas"),
-  context = blit.webgl.createContext(),
+  context = webgl.createContext(),
   physicalDevice = context.getPhysicalDevices()[0],
   device = context.createLogicalDevice(physicalDevice, [
     {
@@ -17,7 +17,7 @@ const process = { env: { NODE_ENV: "development" } },
   ]),
   vertexShaderModule = device.createShaderModule(ShaderStage.VERTEX, `#version 300 es
     precision mediump float;
-    layout(location = 0) out vec4 color;
+    out vec4 color;
     const vec2 pos[3] = vec2[3](vec2(0.0f, 0.5f), vec2(-0.5f, -0.5f), vec2(0.5f, -0.5f));
     void main() {
       color = vec4(pos[gl_VertexID], 0.5, 1.0);
