@@ -1,7 +1,7 @@
 import * as Types from "./types";
 
 function addPrefix(message: string) {
-  return `blit/${message}`;
+  return `blit: ${message}`;
 }
 
 function wrapHandler(handler: Types.BlitLogHandler, shouldThrow: boolean) {

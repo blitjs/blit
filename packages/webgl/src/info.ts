@@ -16,7 +16,7 @@ function getVersion(gl: Types.$WebGLContext, logger: BlitLogger) {
     } else {
       if (process.env.NODE_ENV !== "production") {
         logger.warn(
-          `Unable to parse minor version in '${version}', assumed to be ${major}.0`
+          `unable to parse minor version in '${version}', assumed to be ${major}.0`
         );
       }
       minor = 0;
@@ -24,7 +24,7 @@ function getVersion(gl: Types.$WebGLContext, logger: BlitLogger) {
   } else {
     if (process.env.NODE_ENV !== "production") {
       logger.warn(
-        `Unable to parse version string '${version}', fell back to 1.0`
+        `unable to parse version string '${version}', fell back to 1.0`
       );
     }
     major = 1;

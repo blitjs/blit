@@ -1,4 +1,4 @@
-import { BlitContextInfo, BlitContextOptions } from "@blit/core";
+import { BlitContextInfo, BlitContextOptions, BlitShaderModule } from "@blit/core";
 
 /* Context */
 export type BlitWebGLContextInfo = {
@@ -15,6 +15,11 @@ export type $WebGLContextCapabilities = {
 };
 
 export type BlitWebGLContextOptions = {} & BlitContextOptions;
+
+/* Shader */
+export type BlitWebGLShaderModule = {
+  $handle: WebGLShader;
+} & BlitShaderModule
 
 /* WebGL */
 export type $WebGLContext = WebGLRenderingContext | WebGL2RenderingContext;

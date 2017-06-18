@@ -1,5 +1,5 @@
 import logger from "../src/logger";
-import containing from "./helpers/containing";
+import containing from "../../../shared/containing";
 
 describe("logger", () => {
   it("should log to the console by default", () => {
