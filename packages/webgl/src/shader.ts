@@ -4,27 +4,27 @@ import * as Types from "./types";
 import { GL_COMPILE_STATUS, STAGE_TO_GL_SHADER_TYPE } from "./common";
 
 function trim(message: string) {
-  return message.replace(/^[\s\u0000]+|[\s\u0000]+$/g, '');
+  return message.replace(/^[\s\u0000]+|[\s\u0000]+$/g, "");
 }
 
-export function createShaderModule(
+export function compileShader(
+  source: string,
   gl: Types.$WebGLContext,
   logger: BlitLogger,
-  stage: ShaderStage,
-  source: string
-): Types.BlitWebGLShaderModule {
-  const $handle = gl.createShader(STAGE_TO_GL_SHADER_TYPE[stage])!;
+  stage: ShaderStage
+) {
+  const handle = gl.createShader(STAGE_TO_GL_SHADER_TYPE[stage])!;
   if (process.env.NODE_ENV !== "production") {
-    if ($handle === null) {
+    if (handle === null) {
       logger.error("cannot create shader");
     }
   }
-  gl.shaderSource($handle, source);
-  gl.compileShader($handle);
+  gl.shaderSource(handle, source);
+  gl.compileShader(handle);
   if (process.env.NODE_ENV !== "production") {
-    const status = gl.getShaderParameter($handle, GL_COMPILE_STATUS);
+    const status = gl.getShaderParameter(handle, GL_COMPILE_STATUS);
     if (!status) {
-      const info = gl.getShaderInfoLog($handle),
+      const info = gl.getShaderInfoLog(handle),
         expression = /((ERROR)|(WARNING)): ?[0-9]+\:([0-9]+): /g;
       if (info) {
         const matches = info.split(expression);
@@ -47,11 +47,22 @@ export function createShaderModule(
           logger.error(`shader compilation error\r\n${trim(info)}`);
         }
       } else {
-        logger.error('shader compilation error');
+        logger.error("shader compilation error");
       }
     }
   }
+  return handle;
+}
+
+export function createShaderModule(source: string): Types.BlitWebGLShaderModule {
   return {
-    $handle
+    $source: source
   };
+}
+
+export function createShaderCache() {
+  return {
+    [ShaderStage.VERTEX]: new WeakMap<Types.BlitWebGLShaderModule, WebGLShader>(),
+    [ShaderStage.FRAGMENT]: new WeakMap<Types.BlitWebGLShaderModule, WebGLShader>()
+  }
 }

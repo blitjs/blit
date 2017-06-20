@@ -4,7 +4,7 @@ import * as Types from "./types";
 import createInfo from "./info";
 import createCapabilities from "./capabilities";
 import createPhysicalDevice from "./physicalDevice";
-import createLogicalDevice from "./logicalDevice";
+import createDevice from "./device";
 
 function getPhysicalDevices() {
   return [createPhysicalDevice()];
@@ -26,7 +26,7 @@ export default function context(
     info,
     capabilities: capabilities.context,
     getPhysicalDevices,
-    createLogicalDevice: () => createLogicalDevice($gl, $logger),
+    createDevice: () => createDevice($gl, $logger),
     $logger,
     $gl,
     $glCapabilities: capabilities.gl

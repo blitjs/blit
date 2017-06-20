@@ -1,4 +1,10 @@
-import { BlitContextInfo, BlitContextOptions, BlitShaderModule } from "@blit/core";
+import {
+  BlitContextInfo,
+  BlitContextOptions,
+  BlitShaderModule,
+  ShaderStage,
+  BlitGraphicsPipeline
+} from "@blit/core";
 
 /* Context */
 export type BlitWebGLContextInfo = {
@@ -18,8 +24,33 @@ export type BlitWebGLContextOptions = {} & BlitContextOptions;
 
 /* Shader */
 export type BlitWebGLShaderModule = {
+  $source: string;
+} & BlitShaderModule;
+
+export type BlitWebGLPipelineShaderStage = {
   $handle: WebGLShader;
-} & BlitShaderModule
+  $stage: ShaderStage;
+} & BlitShaderModule;
+
+export type $ShaderCache = {
+  [index: number]: WeakMap<BlitShaderModule, WebGLShader>
+}
+
+/* Graphics Pipeline */
+export type $Program = WebGLProgram;
+
+export type BlitWebGLGraphicsPipeline = {
+  $program: $Program;
+} & BlitGraphicsPipeline;
+
+export type BlitWebGLPipelineShaderStageCreateInfo = {
+  name: string;
+  module: BlitWebGLShaderModule;
+}
+
+export type BlitWebGLGraphicsPipelineCreateInfo = {
+  stages: {[index: number]: BlitWebGLPipelineShaderStageCreateInfo}
+}
 
 /* WebGL */
 export type $WebGLContext = WebGLRenderingContext | WebGL2RenderingContext;
