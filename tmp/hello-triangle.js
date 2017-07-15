@@ -1,7 +1,6 @@
 const process = { env: { NODE_ENV: "development" } },
   { core: { QueueFlag, ShaderStage }, webgl } = blit,
-  canvas = document.createElement("canvas"),
-  context = webgl.createContext(),
+  context = webgl.createContext();/*,
   physicalDevice = context.getPhysicalDevices()[0],
   device = context.createDevice(physicalDevice, [
     {
@@ -14,8 +13,8 @@ const process = { env: { NODE_ENV: "development" } },
         ),
       queuePriorities: [1.0]
     }
-  ]),
-  vertexShaderModule = device.createShaderModule(`#version 300 es
+  ]);
+  /*vertexShaderModule = device.createShaderModule(`#version 300 es
     precision mediump float;
     out vec4 color;
     const vec2 pos[3] = vec2[3](vec2(0.0f, 0.5f), vec2(-0.5f, -0.5f), vec2(0.5f, -0.5f));
@@ -41,4 +40,4 @@ const process = { env: { NODE_ENV: "development" } },
         name: "main"
       }
     }
-  }]);
+  }]);*/

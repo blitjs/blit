@@ -1,8 +1,5 @@
 import { ShaderStage } from "@blit/core";
 
-// Clients
-export const MAX_CONTEXTS_PER_CLIENT = 10;
-
 // All WebGL1/2 constants
 export const GL_DEPTH_BUFFER_BIT = 0x00000100;
 export const GL_STENCIL_BUFFER_BIT = 0x00000400;

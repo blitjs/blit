@@ -14,6 +14,37 @@ export type BlitContext = {
   createDevice(): BlitLogicalDevice;
 };
 
+/* Workers */
+export type BlitClient = {
+  createContext(): BlitId;
+  createDevice(): BlitId;
+  createShaderModule(): BlitId;
+}
+
+/* Proxies */
+export type BlitId = number;
+
+// A client object which represents an object on the server
+export type BlitProxy = {
+  $id: BlitId; // Identifier used to reference the actual object on the server
+}
+
+// Objects which have a binary representation and can be transferred between server/client
+export type BlitSend = {
+  $data: ArrayBuffer;
+}
+
+export type BlitContextProxy = BlitProxy & {
+  createDevice(): BlitLogicalDeviceProxy;
+}
+
+export type BlitLogicalDeviceProxy = BlitProxy & {
+  createShaderModule(): BlitShaderModuleProxy;
+}
+
+export type BlitShaderModuleProxy = BlitProxy & {
+}
+
 /* Physical Device */
 export type BlitPhysicalDevice = {
   getQueueFamilies(): BlitQueueFamily[];

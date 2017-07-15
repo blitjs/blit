@@ -67,9 +67,3 @@ export type BlitWebGLGraphicsPipelineCreateInfo = {
 
 /* WebGL */
 export type $WebGLContext = WebGLRenderingContext | WebGL2RenderingContext;
-
-/* Client */
-export type $WebGLClientOptions = {
-  messageHandler: any;
-  contextIdOffset: number;
-}
